@@ -84,7 +84,7 @@ X_train.shape
 #Build theLSTM model
 
 model = Sequential()
-model.add(LSTM(50, return_sequences=True, input_shape=(x_train[1], 1))
+model.add(LSTM(50, return_sequences=True, input_shape=(x_train[1], 1)))
 model.add(LSTM(50, return_sequences=False))
 model.add(Dense(25))
 model.add(Dense(1))
@@ -133,7 +133,7 @@ valid = data[training_data_len:]
 valid['Predictions'] = predictions
 
 plt.figure(figsize=(16,8))
-plt.title('Model')
+plt.title('Prediction Model on Stock Analysis')
 plt.xlabel('Date', fontsize=18)
 plt.ylabel('Close Price USD ($)', fontsize=18)
 plt.plot(train['Close'])
