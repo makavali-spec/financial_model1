@@ -4,8 +4,9 @@ import numpy as np
 import pandas as pd
 
 from sklearn.preprocessing import MinMaxScaler
-from keras.models import Sequantial
-from keras.layers import Dense, LSTM
+import tensorflow as tf
+from tensorflow.keras.models import Sequantial
+from tensorflow.keras.layers import Dense, LSTM
 import matplotlib.pyplot as plt
 
 
@@ -40,7 +41,7 @@ dataset = data.values
 
 #Get the number of rows to train the model on
 
-training_data =len(dataset) * 0.8
+training_data = len(dataset) * 0.8
 
 #Round off the dataset
 training_data_len = math.ceil(training_data)
@@ -145,25 +146,3 @@ plt.show()
 #Show the valid and Predicted Price
 
 valid
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
