@@ -5,7 +5,7 @@ import pandas as pd
 
 from sklearn.preprocessing import MinMaxScaler
 import tensorflow as tf
-from tensorflow.keras.models import Sequantial
+from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LSTM
 import matplotlib.pyplot as plt
 
@@ -56,7 +56,7 @@ scaled_data
 
 #Create the training dataset
 
-train_data = scaled_data[0:training_data_len, 1]
+train_data = scaled_data[0:training_data_len: 1]
 #Split the data into X_train, y_train
 
 x_train = []
@@ -79,20 +79,20 @@ x_train, y_train = np.array(x_train), np.array(y_train)
 x_train.shape
 
 x_train = np.reshape(x_train,(x_train.shape[0], x_train.shape[1], 1))
-X_train.shape
+x_train.shape
 
 
 #Build theLSTM model
 
 model = Sequential()
-model.add(LSTM(50, return_sequences=True, input_shape=(x_train[1], 1)))
+model.add(LSTM(50, return_sequences=True))
 model.add(LSTM(50, return_sequences=False))
 model.add(Dense(25))
 model.add(Dense(1))
 
 
 #Compile the model
-model.compile(optimizer='adam', loss='mean_squared_error', metrics['accuracy'])
+model.compile(optimizer='adam', loss='mean_squared_error', metrics='accuracy')
 
 #Train the model
 model.fit(x_train, y_train, batch_size=1, epochs=5)
@@ -141,8 +141,3 @@ plt.plot(train['Close'])
 plt.plot(valid[['Close', 'Predictions']])
 plt.legend(['Train', 'Actual_Val', 'Predictions'], loc='lower right')
 plt.show()
-
-
-#Show the valid and Predicted Price
-
-valid
